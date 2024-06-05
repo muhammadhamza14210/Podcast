@@ -11,7 +11,7 @@ const LeftSideBar = () => {
   const pathName = usePathname();
   const router = useRouter();
   return (
-    <section className="left_sidebar">
+    <aside className="left_sidebar bg-gray-900 p-4 flex flex-col h-full">
       <nav className="flex flex-col gap-6">
         <Link
           href="/"
@@ -25,13 +25,15 @@ const LeftSideBar = () => {
       </nav>
 
       {sideBarLinks.map(({ route, label, imgURL }) => {
-        const isActive = pathName === route || pathName.startsWith(`${router}/`);
+        const isActive =
+          pathName === route || pathName.startsWith(`${router}/`);
         return (
           <Link
             href={route}
             key={label}
             className={cn(
-              "flex gap-3 items-center py-4 max-lg:px-4 justify-center lg:justify-start" ,{"bg-nav-focus border-r-4 border-yellow-1": isActive}
+              "flex gap-3 items-center py-4 max-lg:px-4 justify-center lg:justify-start",
+              { "bg-nav-focus border-r-4 border-yellow-1": isActive }
             )}
           >
             <Image src={imgURL} alt={label} width={24} height={24} />
@@ -39,7 +41,7 @@ const LeftSideBar = () => {
           </Link>
         );
       })}
-    </section>
+    </aside>
   );
 };
 
